@@ -10,10 +10,13 @@ const Header = () => {
         <Link to="/" className="hover:underline">Home</Link>
         <Link to="/projects" className="hover:underline">Projects</Link>
         <Link to="/skills" className="hover:underline">Skills</Link>
+        <Link to="/about" className="hover:underline">About</Link>
         <Link to="/admin" className="hover:underline">Admin</Link>
       </nav>
       <div>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700 transition-colors">Contact</button>
+        <Link to="/contact">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700 transition-colors">Contact</button>
+        </Link>
       </div>
     </header>
   );
