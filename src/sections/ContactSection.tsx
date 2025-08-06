@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const ContactSection = () => {
+const ContactSection = ({ className = '' }: { className?: string }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -11,7 +11,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4">
+    <section id="contact" className={`min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4 ${className}`}>
       <div className="max-w-lg w-full bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8">
         <h2 className="text-3xl font-extrabold mb-6 text-center">Contact</h2>
         <form onSubmit={handleSubmit} className="space-y-5">

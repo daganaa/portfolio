@@ -1,12 +1,12 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const HomeSection = () => {
+const HomeSection = ({ className = '' }: { className?: string }) => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 200], [0, -60]);
   const opacity = useTransform(scrollY, [0, 200], [1, 0.7]);
 
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section id="home" className={`min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 ${className}`}>
       <motion.header
         className="py-16 text-center"
         style={{ y, opacity }}

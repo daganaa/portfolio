@@ -1,5 +1,5 @@
-const AboutSection = () => (
-  <section id="about" className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4">
+const AboutSection = ({ className = '' }: { className?: string }) => (
+  <section id="about" className={`min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4 ${className}`}>
     <div className="max-w-2xl bg-white dark:bg-gray-900 rounded-xl shadow-lg p-8 text-center">
       <h2 className="text-3xl font-extrabold mb-4">About Me</h2>
       <p className="text-lg text-gray-700 dark:text-gray-200">

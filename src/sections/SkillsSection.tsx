@@ -26,8 +26,8 @@ const SkillGrid = ({ skills }: { skills: { name: string; icon: string }[] }) => 
     ))}
   </div>
 );
-const SkillsSection = () => (
-  <section id="skills" className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col items-center py-12">
+const SkillsSection = ({ className = '' }: { className?: string }) => (
+  <section id="skills" className={`min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col items-center py-12 ${className}`}>
     <h2 className="text-4xl font-extrabold mb-10">Skills</h2>
     <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
