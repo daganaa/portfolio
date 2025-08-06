@@ -1,15 +1,25 @@
 import { useState } from "react";
+import { supabase } from "../supabaseClient";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Auth logic will be added later
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    // TODO: Call Supabase auth
+    setLoading(true);
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    setLoading(false);
+    if (error) {
+      setError(error.message);
+    } else {
+      navigate("/admin");
+    }
   };
 
   return (
@@ -33,7 +43,9 @@ const Login = () => {
           className="mb-6 w-full px-3 py-2 border rounded focus:outline-none focus:ring"
           required
         />
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors font-semibold">Login</button>
+        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors font-semibold" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
       </form>
     </div>
   );

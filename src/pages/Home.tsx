@@ -1,3 +1,5 @@
+import ProjectGrid from '../components/ProjectGrid';
+
 const Home = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800">
@@ -6,7 +8,7 @@ const Home = () => {
         <p className="text-xl text-gray-600 dark:text-gray-300">Modern Portfolio</p>
       </header>
       <main className="w-full max-w-5xl px-4">
-        {/* ProjectGrid will go here */}
+        <ProjectGrid />
       </main>
     </div>
   );
