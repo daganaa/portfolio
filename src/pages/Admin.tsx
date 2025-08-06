@@ -4,7 +4,6 @@ import { supabase } from '../supabaseClient';
 import AdminDashboard from '../components/AdminDashboard';
 import AdminForm from '../components/AdminForm';
 
-// Use the same Project type as AdminForm/AdminDashboard
 export type Project = {
   id?: string;
   name: string;
@@ -13,21 +12,12 @@ export type Project = {
   link: string;
 };
 
-const sampleProjects: Project[] = [
-  {
-    id: '1',
-    name: 'Sample Project',
-    description: 'This is a sample project.',
-    image_url: 'https://via.placeholder.com/150',
-    link: 'https://example.com',
-  },
-];
-
 const Admin = () => {
-  const [projects, setProjects] = useState<Project[]>(sampleProjects);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [editing, setEditing] = useState<Project | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,28 +26,72 @@ const Admin = () => {
       if (!data.session) {
         navigate('/login');
       } else {
-        setLoading(false);
+        fetchProjects();
       }
     };
     checkSession();
+    // eslint-disable-next-line
   }, [navigate]);
+
+  const fetchProjects = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.from('projects').select('*').order('created_at', { ascending: false });
+    if (!error && data) setProjects(data);
+    setLoading(false);
+  };
 
   const handleEdit = (project: Project) => {
     setEditing(project);
     setShowForm(true);
   };
-  const handleDelete = (id: string) => {
-    setProjects(projects.filter(p => p.id !== id));
+
+  const handleDelete = async (id: string) => {
+    setSubmitting(true);
+    await supabase.from('projects').delete().eq('id', id);
+    await fetchProjects();
+    setSubmitting(false);
   };
-  // Accept file param to match AdminForm signature
-  const handleFormSubmit = (project: Project, file?: File) => {
+
+  const uploadImage = async (file: File) => {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Date.now()}.${fileExt}`;
+    const { data, error } = await supabase.storage.from('project-images').upload(fileName, file, { upsert: true });
+    if (error) throw error;
+    const { data: urlData } = supabase.storage.from('project-images').getPublicUrl(data.path);
+    return urlData.publicUrl;
+  };
+
+  const handleFormSubmit = async (project: Project, file?: File) => {
+    setSubmitting(true);
+    let imageUrl = project.image_url;
+    if (file) {
+      imageUrl = await uploadImage(file);
+    }
+    if (editing && editing.id) {
+      // Update
+      await supabase.from('projects').update({
+        name: project.name,
+        description: project.description,
+        link: project.link,
+        image_url: imageUrl,
+      }).eq('id', editing.id);
+    } else {
+      // Create
+      await supabase.from('projects').insert({
+        name: project.name,
+        description: project.description,
+        link: project.link,
+        image_url: imageUrl,
+      });
+    }
     setShowForm(false);
     setEditing(null);
-    // Add or update logic will go here
+    await fetchProjects();
+    setSubmitting(false);
   };
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Checking authentication...</div>;
+    return <div className="min-h-screen flex items-center justify-center">Loading projects...</div>;
   }
 
   return (
@@ -68,6 +102,7 @@ const Admin = () => {
         {showForm && (
           <AdminForm initial={editing || undefined} onSubmit={handleFormSubmit} />
         )}
+        {submitting && <div className="mb-2 text-blue-600">Processing...</div>}
         <AdminDashboard projects={projects as any} onEdit={handleEdit} onDelete={handleDelete} />
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import ProjectCard from './ProjectCard';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type Project = {
   id: string;
@@ -8,6 +9,15 @@ type Project = {
   description: string;
   image_url: string;
   link: string;
+};
+
+const gridVariants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+  hidden: {},
 };
 
 const ProjectGrid = () => {
@@ -26,11 +36,18 @@ const ProjectGrid = () => {
   if (loading) return <div className="text-center py-8">Loading projects...</div>;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {projects.map(project => (
-        <ProjectCard key={project.id} project={project} />
-      ))}
-    </div>
+    <motion.div
+      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+      variants={gridVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <AnimatePresence>
+        {projects.map(project => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
