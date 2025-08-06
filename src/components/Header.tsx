@@ -9,6 +9,7 @@ const Header = () => {
       <nav className="flex gap-6 items-center">
         <Link to="/" className="hover:underline">Home</Link>
         <Link to="/projects" className="hover:underline">Projects</Link>
+        <Link to="/skills" className="hover:underline">Skills</Link>
         <Link to="/admin" className="hover:underline">Admin</Link>
       </nav>
       <div>
