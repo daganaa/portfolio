@@ -19,15 +19,15 @@ const toolsSkills = [
 const SkillGrid = ({ skills }: { skills: { name: string; icon: string }[] }) => (
   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
     {skills.map(skill => (
-      <div key={skill.name} className="flex flex-col items-center p-4 rounded-lg bg-white dark:bg-gray-800 shadow hover:shadow-lg transition">
+      <div key={skill.name} className="flex flex-col items-center p-4 rounded-lg bg-white shadow hover:shadow-lg transition">
         <span className="text-3xl mb-2">{skill.icon}</span>
-        <span className="text-sm font-medium text-gray-700 dark:text-gray-200">{skill.name}</span>
+        <span className="text-sm font-medium text-gray-700">{skill.name}</span>
       </div>
     ))}
   </div>
 );
 const SkillsSection = ({ className = '' }: { className?: string }) => (
-  <section id="skills" className={`min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col items-center py-12 ${className}`}>
+  <section id="skills" className={`min-h-screen bg-white flex flex-col items-center py-12 ${className}`}>
     <h2 className="text-4xl font-extrabold mb-10">Skills</h2>
     <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>

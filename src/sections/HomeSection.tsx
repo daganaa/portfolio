@@ -6,7 +6,7 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
   const opacity = useTransform(scrollY, [0, 200], [1, 0.7]);
 
   return (
-    <section id="home" className={`min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 ${className}`}>
+    <section id="home" className={`min-h-screen flex flex-col items-center justify-center bg-white ${className}`}>
       <motion.header
         className="py-16 text-center"
         style={{ y, opacity }}
@@ -15,7 +15,7 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         <h1 className="text-5xl font-extrabold mb-4 tracking-tight">Your Name</h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300">Modern Portfolio</p>
+        <p className="text-xl text-gray-600">Modern Portfolio</p>
       </motion.header>
     </section>
   );

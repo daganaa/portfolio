@@ -5,7 +5,7 @@ import AboutSection from '../sections/AboutSection';
 import ContactSection from '../sections/ContactSection';
 
 const Landing = () => (
-  <div className="snap-y snap-mandatory h-screen overflow-y-auto">
+  <div className="snap-y snap-mandatory h-screen overflow-y-auto bg-white">
     <HomeSection className="snap-start" />
     <ProjectsSection className="snap-start" />
     <SkillsSection className="snap-start" />
