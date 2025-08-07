@@ -91,17 +91,21 @@ const Header = () => {
   if (!isVisible) return null;
 
   return (
-    <header className="w-full flex items-center justify-between px-6 py-4 bg-gray-300 shadow sticky top-0 z-50 transition-opacity duration-300">
-      <div className="font-extrabold text-xl tracking-tight text-gray-900 cursor-pointer" onClick={() => isLanding ? smoothScrollToSection('home') : window.location.assign('/') }>
-        Your Name
+    <header className="fixed left-0 top-0 h-full w-16 bg-gray-300 shadow z-50 transition-opacity duration-300 flex flex-col p-3">
+      <div className="font-extrabold text-sm tracking-tight text-gray-900 cursor-pointer mb-6 text-center" onClick={() => isLanding ? smoothScrollToSection('home') : window.location.assign('/') }>
+        NT
       </div>
-      <nav className="flex gap-6 items-center">
-        <button className="hover:underline bg-transparent" onClick={() => isLanding ? smoothScrollToSection('projects') : window.location.assign('/#projects')}>Projects</button>
-        <button className="hover:underline bg-transparent" onClick={() => isLanding ? smoothScrollToSection('skills') : window.location.assign('/#skills')}>Skills</button>
-        <button className="hover:underline bg-transparent" onClick={() => isLanding ? smoothScrollToSection('about') : window.location.assign('/#about')}>About</button>
-      </nav>
+      
+      <div className="flex-1 flex flex-col justify-center">
+        <nav className="flex flex-col gap-6 items-center">
+          <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors" onClick={() => isLanding ? smoothScrollToSection('projects') : window.location.assign('/#projects')}>📁</button>
+          <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors" onClick={() => isLanding ? smoothScrollToSection('skills') : window.location.assign('/#skills')}>⚡</button>
+          <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors" onClick={() => isLanding ? smoothScrollToSection('about') : window.location.assign('/#about')}>👤</button>
+        </nav>
+      </div>
+      
       <div>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700 transition-colors" onClick={() => isLanding ? smoothScrollToSection('contact') : window.location.assign('/#contact')}>Contact</button>
+        <button className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors mx-auto" onClick={() => isLanding ? smoothScrollToSection('contact') : window.location.assign('/#contact')}>✉️</button>
       </div>
     </header>
   );
