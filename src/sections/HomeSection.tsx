@@ -12,7 +12,7 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
         style={{ y, opacity }}
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Name and Title */}
