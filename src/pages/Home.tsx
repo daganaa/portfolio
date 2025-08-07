@@ -15,7 +15,7 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <h1 className="text-5xl font-extrabold mb-4 tracking-tight">Your Name</h1>
+        <h1 className="text-5xl font-extrabold mb-4 tracking-tight">Nathan Thai</h1>
         <p className="text-xl text-gray-600 dark:text-gray-300">Modern Portfolio</p>
       </motion.header>
     </div>
