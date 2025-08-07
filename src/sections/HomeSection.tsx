@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileAlt, FaFolder, FaTools, FaUser, FaEnvelope } from 'react-icons/fa';
-
+import headshot from '../assets/headshot.jpeg';
 const HomeSection = ({ className = '' }: { className?: string }) => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 200], [0, -60]);
@@ -94,7 +94,7 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
           <div className="flex justify-end mt-12 lg:mt-0">
             <div className="w-60 h-60 rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="/your-photo.jpg" 
+                src={headshot} 
                 alt="Nathan Thai" 
                 className="w-full h-full object-cover"
               />
