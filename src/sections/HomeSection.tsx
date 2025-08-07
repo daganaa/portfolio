@@ -35,8 +35,8 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
 
             {/* Column 2–3: Name and Title */}
             <div className="col-span-2">
-              <h1 className="text-5xl font-bold text-blue-900 mb-4">Nathan Thai</h1>
-              <p className="text-2xl text-blue-700 mb-8">placeholder</p>
+              <h1 className="text-5xl font-bold text-blue-900 mb-4">nathan thai</h1>
+              <p className="text-2xl text-blue-700 mb-8">cs @ boston college</p>
             </div>
 
             {/* Column 4: Vertical Divider */}
