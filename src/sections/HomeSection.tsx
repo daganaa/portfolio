@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileAlt, FaFolder, FaTools, FaUser, FaEnvelope } from 'react-icons/fa';
 import headshot from '../assets/headshot.jpeg';
