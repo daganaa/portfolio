@@ -28,18 +28,18 @@ const SkillGrid = ({ skills }: { skills: { name: string; icon: string }[] }) => 
 );
 const SkillsSection = ({ className = '' }: { className?: string }) => (
   <section id="skills" className={`min-h-screen bg-white flex flex-col items-center py-12 ${className}`}>
-    <h2 className="text-4xl font-extrabold mb-10">Skills</h2>
+    <h2 className="text-4xl font-extrabold mb-10">skills</h2>
     <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
-        <h3 className="text-xl font-bold mb-4 text-center">Front End</h3>
+        <h3 className="text-xl font-bold mb-4 text-center">frontend</h3>
         <SkillGrid skills={frontEndSkills} />
       </div>
       <div>
-        <h3 className="text-xl font-bold mb-4 text-center">Back End</h3>
+        <h3 className="text-xl font-bold mb-4 text-center">backend</h3>
         <SkillGrid skills={backEndSkills} />
       </div>
       <div>
-        <h3 className="text-xl font-bold mb-4 text-center">Tools</h3>
+        <h3 className="text-xl font-bold mb-4 text-center">tools</h3>
         <SkillGrid skills={toolsSkills} />
       </div>
     </div>

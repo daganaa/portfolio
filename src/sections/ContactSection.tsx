@@ -13,11 +13,11 @@ const ContactSection = ({ className = '' }: { className?: string }) => {
   return (
     <section id="contact" className={`min-h-screen flex flex-col items-center justify-center bg-white px-4 ${className}`}>
       <div className="max-w-lg w-full bg-white rounded-xl shadow-lg p-8">
-        <h2 className="text-3xl font-extrabold mb-6 text-center">Contact</h2>
+        <h2 className="text-3xl font-extrabold mb-6 text-center">contact</h2>
         <form onSubmit={handleSubmit} className="space-y-5">
           <input
             type="text"
-            placeholder="Your Name"
+            placeholder="your name"
             value={name}
             onChange={e => setName(e.target.value)}
             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
@@ -25,14 +25,14 @@ const ContactSection = ({ className = '' }: { className?: string }) => {
           />
           <input
             type="email"
-            placeholder="Your Email"
+            placeholder="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
             required
           />
           <textarea
-            placeholder="Your Message"
+            placeholder="say hi!"
             value={message}
             onChange={e => setMessage(e.target.value)}
             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
