@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Footer from '../components/Footer';
 
 const ContactSection = ({ className = '' }: { className?: string }) => {
   const [name, setName] = useState('');
@@ -11,37 +12,40 @@ const ContactSection = ({ className = '' }: { className?: string }) => {
   };
 
   return (
-    <section id="contact" className={`min-h-screen flex flex-col items-center justify-center bg-white px-4 ${className}`}>
-      <div className="max-w-lg w-full bg-white rounded-xl shadow-lg p-8">
-        <h2 className="text-3xl font-extrabold mb-6 text-center">contact</h2>
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <input
-            type="text"
-            placeholder="your name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
-            required
-          />
-          <input
-            type="email"
-            placeholder="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
-            required
-          />
-          <textarea
-            placeholder="say hi!"
-            value={message}
-            onChange={e => setMessage(e.target.value)}
-            className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
-            rows={5}
-            required
-          />
-          <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition-colors">Send</button>
-        </form>
+    <section id="contact" className={`min-h-screen flex flex-col bg-white px-4 ${className}`}>
+      <div className="flex-1 flex items-center justify-center">
+        <div className="max-w-lg w-full bg-white rounded-xl shadow-lg p-8">
+          <h2 className="text-3xl font-extrabold mb-6 text-center">contact</h2>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <input
+              type="text"
+              placeholder="your name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
+              required
+            />
+            <input
+              type="email"
+              placeholder="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
+              required
+            />
+            <textarea
+              placeholder="say hi!"
+              value={message}
+              onChange={e => setMessage(e.target.value)}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring"
+              rows={5}
+              required
+            />
+            <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition-colors">Send</button>
+          </form>
+        </div>
       </div>
+      <Footer />
     </section>
   );
 };

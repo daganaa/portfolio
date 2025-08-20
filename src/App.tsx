@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dropdown from './components/Dropdown';
 import Landing from './pages/Landing';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
@@ -6,7 +7,7 @@ import Login from './pages/Login';
 function App() {
   return (
     <BrowserRouter>
-    
+      <Dropdown />
       {/*TODO: make better header. <Header />*/}
       <Routes>
         <Route path="/" element={<Landing />} />

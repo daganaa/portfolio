@@ -8,7 +8,7 @@ const Landing = () => (
   <div className="snap-y snap-mandatory h-screen overflow-y-auto bg-white">
     <HomeSection className="snap-start" />
     <ProjectsSection className="snap-start" />
-    <SkillsSection className="snap-start" />
+    <SkillsSection className="snap-center" />
     <AboutSection className="snap-start" />
     <ContactSection className="snap-start" />
   </div>

@@ -1,33 +1,43 @@
+import type { ReactElement } from 'react';
+import { FaReact, FaFileCode, FaWind, FaFilm, FaPalette, FaNodeJs, FaCloud, FaServer, FaDatabase, FaPython, FaRobot, FaLeaf, FaBug, FaGitAlt, FaCode, FaPaintBrush, FaRocket, FaBolt, FaVuejs } from 'react-icons/fa';
+
 const frontEndSkills = [
-  { name: 'React', icon: '⚛️' },
-  { name: 'TypeScript', icon: '🟦' },
-  { name: 'Tailwind', icon: '🌬️' },
-  { name: 'Framer Motion', icon: '🎞️' },
+  { name: 'react', icon: <FaReact /> },
+  { name: 'typescript', icon: <FaFileCode /> },
+  { name: 'tailwind', icon: <FaWind /> },
+  { name: 'framer', icon: <FaFilm /> },
+  { name: 'm-ui', icon: <FaPalette /> },
 ];
 const backEndSkills = [
-  { name: 'Node.js', icon: '🟩' },
-  { name: 'Supabase', icon: '🟢' },
-  { name: 'Express', icon: '🚂' },
-  { name: 'PostgreSQL', icon: '🐘' },
+  { name: 'node', icon: <FaNodeJs /> },
+  { name: 'supabase', icon: <FaCloud /> },
+  { name: 'express', icon: <FaServer /> },
+  { name: 'postgres', icon: <FaDatabase /> },
+  { name: 'python', icon: <FaPython /> },
+  { name: 'puppeteer', icon: <FaRobot /> },
+  { name: 'beautifulsoup', icon: <FaLeaf /> },
+  { name: 'selenium', icon: <FaBug /> },
 ];
 const toolsSkills = [
-  { name: 'Git', icon: '🔧' },
-  { name: 'VS Code', icon: '💻' },
-  { name: 'Figma', icon: '🎨' },
-  { name: 'Vercel', icon: '▲' },
+  { name: 'git', icon: <FaGitAlt /> },
+  { name: 'vsc', icon: <FaCode /> },
+  { name: 'figma', icon: <FaPaintBrush /> },
+  { name: 'vercel', icon: <FaRocket /> },
+  { name: 'vite', icon: <FaBolt /> },
+  { name: 'vue', icon: <FaVuejs /> },
 ];
-const SkillGrid = ({ skills }: { skills: { name: string; icon: string }[] }) => (
-  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+const SkillGrid = ({ skills }: { skills: { name: string; icon: ReactElement }[] }) => (
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
     {skills.map(skill => (
-      <div key={skill.name} className="flex flex-col items-center p-4 rounded-lg bg-white shadow hover:shadow-lg transition">
-        <span className="text-3xl mb-2">{skill.icon}</span>
-        <span className="text-sm font-medium text-gray-700">{skill.name}</span>
+      <div key={skill.name} className="flex flex-col items-center justify-center p-4">
+        <span className="text-5xl mb-2">{skill.icon}</span>
+        <span className="text-xs sm:text-sm font-medium text-gray-700">{skill.name}</span>
       </div>
     ))}
   </div>
 );
 const SkillsSection = ({ className = '' }: { className?: string }) => (
-  <section id="skills" className={`min-h-screen bg-white flex flex-col items-center py-12 ${className}`}>
+  <section id="skills" className={`min-h-screen bg-white flex flex-col items-center justify-center py-12 ${className}`}>
     <h2 className="text-4xl font-extrabold mb-10">skills</h2>
     <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>

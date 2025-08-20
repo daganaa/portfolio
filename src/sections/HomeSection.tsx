@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaFileAlt, FaFolder, FaTools, FaUser, FaEnvelope } from 'react-icons/fa';
 import headshot from '../assets/headshot.jpeg';
 import resume from '../assets/resume.pdf';
+import CyclingTitle from '../components/CyclingTitle';
 
 const HomeSection = ({ className = '' }: { className?: string }) => {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -34,11 +35,6 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
 
   // Cycling title
   const titles = ['cs @ boston college', 'software engineer', 'student researcher', 'ai enthusiast', 'data scientist', '채재민'];
-  const [index, setIndex] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setIndex((p) => (p + 1) % titles.length), 2500);
-    return () => clearInterval(t);
-  }, []);
 
   return (
     <section
@@ -52,12 +48,12 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: 'easeInOut' }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
           {/* Left Column */}
-          <div className="grid grid-cols-7 gap-x-1 items-start">
+          <div className="grid grid-cols-1 lg:[grid-template-columns:_auto_auto_1px_auto] gap-x-4 lg:gap-x-8 items-start">
             {/* Social Icons */}
             <motion.div
-              className="flex flex-col gap-3 pt-1 items-start"
+              className="hidden lg:flex flex-col gap-3 pt-1 items-start lg:col-[1]"
               style={{
                 opacity: socialOpacity,
                 scale: socialScale,
@@ -77,35 +73,24 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
 
             {/* Name + Cycling Title */}
             <motion.div
-              className="col-span-4"
+              className="col-span-7 lg:col-[2] flex flex-col items-center md:items-center lg:items-start text-center md:text-center lg:text-left"
               style={{
                 opacity: nameOpacity,
                 x: nameX,
                 willChange: 'opacity, transform',
               }}
             >
-              <h1 className="text-5xl font-bold text-blue-900 mb-4 whitespace-nowrap">nathan thai</h1>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-blue-900 mb-3 md:mb-4 whitespace-nowrap">nathan thai</h1>
 
               {/* Animated vertical cycling title */}
-              <div className="relative h-8 overflow-hidden mb-8">
-                <AnimatePresence mode="wait">
-                  <motion.p
-                    key={titles[index]}
-                    className="text-2xl text-blue-700 absolute"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -20, opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {titles[index]}
-                  </motion.p>
-                </AnimatePresence>
+              <div className="mb-6 md:mb-8 w-full">
+                <CyclingTitle titles={titles} className="text-2xl md:text-3xl lg:text-4xl text-blue-700" />
               </div>
             </motion.div>
 
             {/* Vertical Divider */}
             <motion.div
-              className="h-full w-px bg-gray-300 mx-auto -ml-1"
+              className="hidden lg:block h-full w-px bg-gray-300 mx-auto lg:col-[3]"
               style={{
                 opacity: dividerOpacity,
                 scaleY: dividerScaleY,
@@ -116,7 +101,7 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
 
             {/* Navigation */}
             <motion.div
-              className="flex flex-col gap-4"
+              className="hidden lg:flex flex-col gap-4 lg:col-[4]"
               style={{
                 x: navX,
                 y: navY,
@@ -163,7 +148,7 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
 
           {/* Right Column: Photo */}
           <motion.div
-            className="flex justify-end mt-12 lg:mt-0"
+            className="flex justify-center md:justify-end mt-8 md:mt-0"
             style={{
               opacity: photoOpacity,
               scale: photoScale,
@@ -172,7 +157,7 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
             }}
             transition={{ type: 'tween', duration: 0.4 }}
           >
-            <div className="w-60 h-60 rounded-lg overflow-hidden shadow-lg">
+            <div className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-lg overflow-hidden shadow-lg">
               <img
                 src={headshot}
                 alt="Nathan Thai"
