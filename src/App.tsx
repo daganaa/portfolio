@@ -7,7 +7,8 @@ import Header from './components/Header';
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+    
+      {/*TODO: make better header. <Header />*/}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/admin" element={<Admin />} />
