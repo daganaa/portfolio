@@ -50,7 +50,7 @@ const HomeSection = ({ className = '' }: { className?: string }) => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 items-center">
           {/* Left Column */}
-          <div className="grid grid-cols-1 lg:[grid-template-columns:_auto_auto_1px_auto] gap-x-4 lg:gap-x-8 items-start">
+          <div className="grid grid-cols-1 lg:[grid-template-columns:_auto_1fr_1px_auto] gap-x-2 lg:gap-x-4 items-start">
             {/* Social Icons */}
             <motion.div
               className="hidden lg:flex flex-col gap-3 pt-1 items-start lg:col-[1]"
