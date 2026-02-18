@@ -4,7 +4,7 @@ const AboutSection = ({ className = '' }: { className?: string }) => (
       <h2 className="text-3xl font-extrabold mb-4">nice to meet you :)</h2>
       <p className="text-lg text-gray-700">
         <br></br>
-        my name is nathan. i am a fullstack developer (prev. ophelia dating) 
+        my name is nathan. i am a fullstack developer (inc. epic systems) 
         and student researcher at boston college. <br></br><br></br>
         my work aims to make people's lives easier, more beautiful, and simpler. <br></br>
         <br></br>
